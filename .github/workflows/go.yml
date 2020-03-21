@@ -29,12 +29,8 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
+    - name: Tests
+      run: touch .env && go test
 
     - name: Build
       run: go build -v .
-  test:
-    name: Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Tests
-        run: cp .env.example .env && go test
